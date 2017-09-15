@@ -1,0 +1,25 @@
+<configuration>
+  <appender name="BASE_FILE" class="ch.qos.logback.core.FileAppender">
+     <append>true</append>
+     <file>/sdcard/mdmlogs/mdm.log</file>
+     <encoder>
+         <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%file:%line] - %msg%n</pattern>-->
+         <pattern>%d{YYYY-MM-DD HH:mm:ss} %-5level [%file:%line] %msg%n</pattern>
+     </encoder>
+  </appender>
+  <logger name="logger">
+    <appender-ref ref="BASE_FILE"/>
+  </logger>
+  
+  <appender name="LOGCAT" class="ch.qos.logback.classic.android.LogcatAppender">
+    <tagEncoder>
+      <pattern>%logger{12}</pattern>
+    </tagEncoder>
+    <encoder>
+      <pattern>[%-20thread] %msg</pattern>
+    </encoder>
+  </appender>
+  <root level="DEBUG">
+    <appender-ref ref="LOGCAT" />
+  </root>
+</configuration>
